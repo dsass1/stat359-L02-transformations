@@ -1,0 +1,305 @@
+---
+title: "L02 Data Transformation"
+subtitle: "Data Science 1 with R (STAT 301-1)"
+author: "YOUR NAME"
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    code-fold: show
+    link-external-newwindow: true
+
+execute:
+  warning: false
+  
+from: markdown+emoji 
+---
+
+::: {.callout-tip icon=false}
+
+## Github Repo Link
+
+To link to your github **repo**sitory, appropriately edit the example link below. Meaning replace `https://your-github-repo-url` with your github repo url. Suggest verifying the link works before submitting.
+
+[https://your-github-repo-url](https://your-github-repo-url)
+
+:::
+
+## Overview
+
+The goal of this lab is to start building the skills to transform data using the `dplyr` package in R ([dplyr reference page](http://dplyr.tidyverse.org/reference/index.html)). Students will also continue to develop the knowledge and skills needed to effectively access and utilize R documentation.
+
+## Load packages
+
+You should always begin by loading all necessary packages towards the beginning of your document.
+
+```{r}
+#| label: load-pkgs
+
+# Loading package(s)
+
+```
+
+
+## Datasets 
+
+This lab utilizes the `college_rankings` dataset in your `data/` folder. Documentation/codebook can be found in `college_rankings_codebook.csv`. This data was obtained from [Times Higher Education](https://www.timeshighereducation.com/rankings/united-states/2022#!/length/-1/sort_by/rank/sort_order/asc/cols/scores) and [College Scorecard](https://collegescorecard.ed.gov/data). The following lines of code read in the dataset and codebook. We will learn more about reading in data in Chapter 7.   
+
+```{r}
+#| label: load-data
+#| eval: false
+
+# Load data
+college_rankings <- read_csv("data/college_rankings.csv")
+college_rankings_codebook <- read_csv("data/college_rankings_codebook.csv")
+```
+
+## Exercises
+
+### Exercise 1 
+
+Using a single pipeline operator ( `|>` or `%>%` ), find all colleges that:
+
+a. Had a tuition greater than $50,000
+b. Are located in Illinois and ranked in the top 50
+c. have a median ACT score greater than 32 or mean SAT score greater than 1430
+d. have a median ACT score greater than 32 or mean SAT score greater than 1430 AND are ranked in the top 50
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 2
+
+Find the colleges ranked 2, 3, and 4 in 3 different ways:
+
+ - using the "or" operator
+ - using `%in%`
+ - using `between()`
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 3
+
+Was a college from every state ranked in this data frame?
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 4
+
+a) Arrange the data to find the most expensive colleges
+
+b) Use the slice function to select the 5 most expensive colleges
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 5
+
+Create a variable called `avg_financial_aid` which is calculated as the cost of attendance (tuition, fees, room and board) minus the average net price. **ONLY** include the institution and relevant variables in the printed output.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 6
+
+What happens if you specify the name of the same variable multiple times in a `select()` call?
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 7
+
+Use the following vector in conjunction with `any_of()` to select the specified variables from the data frame.
+
+```{r}
+#| label: ex-7-vars
+
+# list of variables
+variables <- c("institution", "state", "rank_2023", "overall_score")
+```
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 8
+
+Use the `contains()` function to select all scores (overall, resources, engagement, outcomes, environment) and the institution from the data frame.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 9
+
+Rename the variable `rank_2023` to `rank` and move that column directly after `institution` in the dataframe.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+### Exercise 10
+
+Do public or private schools on average have a higher tuition, overall score, acceptance rate, and undergraduate enrollment? It would also be useful to have the count of the number of public and private schools in this summary.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+
+### Exercise 11
+
+You have a hypothetical dataset, `data`, with numeric variables `x`, `y`, `z` and categorical variable `c`.
+
+What is wrong with the following code? Then fix it to accomplish the goal.
+
+a) You are interested in calculating the average of `x`, `y`, and `z`.
+
+```{r}
+#| eval: false
+
+# puesdo code
+data |> 
+  summarize(
+    mean = mean(x),
+    mean = mean(y),
+    mean = mean(z)
+  )
+```
+
+
+b) You are interested in calculating the average of `x` by `c` and arranging from high to low.
+
+```{r}
+#| eval: false
+
+# puesdo code
+data |> 
+  group_by(c) |> 
+  summarize(mean(x)) |> 
+  arrange(desc(x))
+```
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+
+### Exercise 12
+
+Use `count()` to find the number of institutions ranked within each state. Print the output with the state with the most institutions on top.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+## Case Study
+
+You made it through your first week at your data analyst job at Tinder and are onto your next assignments. 
+
+The dataset is stored in the `data` folder called `tinder_data`. A codebook, `tinder_data_codebook.csv`, provides a description of each of the variable names. This has been read in for you at the top of the document. We will learn more about importing data later in the quarter. This dataset was provided by [Swipestats.io](https://www.swipestats.io/).
+
+### Objective 1
+
+Determine the distribution of the percent of one message conversations.
+
+Tips:
+
+- how would you calculate the percent
+- remove any users who did not have any conversations as we are only interested in users who used the app
+- use both graph and relevant summary statistics to support your analysis
+
+### Objective 2 
+
+Determine who is most "popular/liked".
+
+Tips:
+
+- arrange the data to see the users with the most matches and output the top 5 users.
+- just because you have the most matches does not mean you are necessarily the most "popular/liked". Determine another way to quantify the most "popular/liked" user and output the top 5 users.
+- Compare your two results and comment on why your method is a "best" metric to quantify "popularity/likability". 
+
+::: callout-note
+
+Remember your boss likes pretty things! Make the graphic look nice. Your summary statistics should only include relevant columns and be displayed as a table. A useful way to make a table is to pipe your output into the `kable()` function. Any conclusions and insights should be in complete sentences.
+
+:::
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
+
+## Graduate Challenge
+
+::: callout-important
+Graduate students are required to complete this challenge. **It is optional for undergraduate students.**
+:::
+
+Any time you have data with extreme outliers, you must decide how you will deal with them: leave them in, remove them, or change the value? Depending on the problem, outliers can greatly impact your results. Often you might want to compare results with and without outliers, so that you can determine the impact and examine the outliers in more detail.
+
+Recall your objective for the case study from L01: **determine if there is a relationship between messages sent and messages received and how this differs based on user gender.**
+
+We will be updating that analysis, but will be taking steps to clean the data and handle outliers.
+
+Complete the following tasks:
+
+- just because someone downloaded the app does not mean they sent or received messages, we are only interested in analyzing users who sent and received messages. First clean the data set by removing any irrelevant data.
+- we will define an outlier as any observation greater than Q3 + 1.5 * IQR or less than Q1 - 1.5 * IQR (Hint: use `quartile()` and `IQR()` to calculate)
+- plot the relationship of `messages_received` by `messages_sent` based on gender with the outliers removed. Include a caption indicating that outliers were removed.
+- Calculate any relevant summary statistics 1) with the outliers included and 2) with the outliers removed. Comment on how the outliers are impacting your statistics.
+
+
+::: {.callout-tip icon="false"}
+## Solution
+
+YOUR SOLUTION HERE
+
+:::
