@@ -1,6 +1,6 @@
 ---
 title: "L02 Data Transformation"
-subtitle: "Data Science 1 with R (STAT 301-1)"
+subtitle: "Foundations of Data Science with R (STAT 359)"
 author: "YOUR NAME"
 
 format:

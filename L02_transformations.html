@@ -2618,8 +2618,8 @@ vertical-align: -.125em;
   </ul></li>
   <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study</a>
   <ul class="collapse">
-  <li><a href="#determine-the-distribution-of-the-percent-of-one-message-conversations." id="toc-determine-the-distribution-of-the-percent-of-one-message-conversations." class="nav-link" data-scroll-target="#determine-the-distribution-of-the-percent-of-one-message-conversations.">1) Determine the distribution of the percent of one message conversations.</a></li>
-  <li><a href="#determine-who-is-most-popularliked." id="toc-determine-who-is-most-popularliked." class="nav-link" data-scroll-target="#determine-who-is-most-popularliked.">2) Determine who is most “popular/liked”.</a></li>
+  <li><a href="#objective-1" id="toc-objective-1" class="nav-link" data-scroll-target="#objective-1">Objective 1</a></li>
+  <li><a href="#objective-2" id="toc-objective-2" class="nav-link" data-scroll-target="#objective-2">Objective 2</a></li>
   </ul></li>
   <li><a href="#graduate-challenge" id="toc-graduate-challenge" class="nav-link" data-scroll-target="#graduate-challenge">Graduate Challenge</a></li>
   </ul>
@@ -2630,7 +2630,7 @@ vertical-align: -.125em;
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">L02 Data Transformation</h1>
-<p class="subtitle lead">Data Science 1 with R (STAT 301-1)</p>
+<p class="subtitle lead">Foundations of Data Science with R (STAT 359)</p>
 </div>
 
 
@@ -2686,8 +2686,9 @@ Github Repo Link
 <div class="cell">
 <details open>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>college_rankings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/college_rankings.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>college_rankings_codebook <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/college_rankings_codebook.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>college_rankings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/college_rankings.csv&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>college_rankings_codebook <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/college_rankings_codebook.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2695,7 +2696,7 @@ Github Repo Link
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <section id="exercise-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>Using a single pipeline operator ( |&gt; ), find all colleges that:</p>
+<p>Using a single pipeline operator ( <code>|&gt;</code> or <code>%&gt;%</code> ), find all colleges that:</p>
 <ol type="a">
 <li>Had a tuition greater than $50,000</li>
 <li>Are located in Illinois and ranked in the top 50</li>
@@ -2721,8 +2722,8 @@ Solution
 <p>Find the colleges ranked 2, 3, and 4 in 3 different ways:</p>
 <ul>
 <li>using the “or” operator</li>
-<li>using %in%</li>
-<li>using between</li>
+<li>using <code>%in%</code></li>
+<li>using <code>between()</code></li>
 </ul>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -2777,7 +2778,7 @@ Solution
 </section>
 <section id="exercise-5" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
-<p>Create a variable called avg_financial_aid which is calculated as the cost of attendance (tuition, fees, room and board) minus the average net price. ONLY include the institution and relevant variables in the printed output.</p>
+<p>Create a variable called <code>avg_financial_aid</code> which is calculated as the cost of attendance (tuition, fees, room and board) minus the average net price. <strong>ONLY</strong> include the institution and relevant variables in the printed output.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2794,7 +2795,7 @@ Solution
 </section>
 <section id="exercise-6" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-6">Exercise 6</h3>
-<p>What happens if you specify the name of the same variable multiple times in a select() call?</p>
+<p>What happens if you specify the name of the same variable multiple times in a <code>select()</code> call?</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2815,7 +2816,8 @@ Solution
 <div class="cell">
 <details open>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;institution&quot;</span>, <span class="st">&quot;state&quot;</span>, <span class="st">&quot;rank_2023&quot;</span>, <span class="st">&quot;overall_score&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list of variables</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;institution&quot;</span>, <span class="st">&quot;state&quot;</span>, <span class="st">&quot;rank_2023&quot;</span>, <span class="st">&quot;overall_score&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
@@ -2851,7 +2853,7 @@ Solution
 </section>
 <section id="exercise-9" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-9">Exercise 9</h3>
-<p>Rename the variable ’rank_2023<code>to</code>rank<code>and move that column directly after</code>institution` in the dataframe.</p>
+<p>Rename the variable <code>rank_2023</code> to <code>rank</code> and move that column directly after <code>institution</code> in the dataframe.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2893,10 +2895,13 @@ Solution
 <div class="cell">
 <details open>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(y),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># puesdo code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(z)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="2" type="a">
@@ -2905,10 +2910,11 @@ Solution
 <div class="cell">
 <details open>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(c) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(x)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># puesdo code</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(c) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(x)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
@@ -2927,7 +2933,7 @@ Solution
 </section>
 <section id="exercise-12" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-12">Exercise 12</h3>
-<p>Use the <code>count</code> function to find the number of institutions ranked within each state. Print the output with the state with the most institutions on top.</p>
+<p>Use <code>count()</code> to find the number of institutions ranked within each state. Print the output with the state with the most institutions on top.</p>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2947,8 +2953,9 @@ Solution
 <h2 class="anchored" data-anchor-id="case-study">Case Study</h2>
 <p>You made it through your first week at your data analyst job at Tinder and are onto your next assignments.</p>
 <p>The dataset is stored in the <code>data</code> folder called <code>tinder_data</code>. A codebook, <code>tinder_data_codebook.csv</code>, provides a description of each of the variable names. This has been read in for you at the top of the document. We will learn more about importing data later in the quarter. This dataset was provided by <a href="https://www.swipestats.io/">Swipestats.io</a>.</p>
-<section id="determine-the-distribution-of-the-percent-of-one-message-conversations." class="level3">
-<h3 class="anchored" data-anchor-id="determine-the-distribution-of-the-percent-of-one-message-conversations.">1) Determine the distribution of the percent of one message conversations.</h3>
+<section id="objective-1" class="level3">
+<h3 class="anchored" data-anchor-id="objective-1">Objective 1</h3>
+<p>Determine the distribution of the percent of one message conversations.</p>
 <p>Tips:</p>
 <ul>
 <li>how would you calculate the percent</li>
@@ -2956,15 +2963,28 @@ Solution
 <li>use both graph and relevant summary statistics to support your analysis</li>
 </ul>
 </section>
-<section id="determine-who-is-most-popularliked." class="level3">
-<h3 class="anchored" data-anchor-id="determine-who-is-most-popularliked.">2) Determine who is most “popular/liked”.</h3>
+<section id="objective-2" class="level3">
+<h3 class="anchored" data-anchor-id="objective-2">Objective 2</h3>
+<p>Determine who is most “popular/liked”.</p>
+<p>Tips:</p>
 <ul>
 <li>arrange the data to see the users with the most matches and output the top 5 users.</li>
 <li>just because you have the most matches does not mean you are necessarily the most “popular/liked”. Determine another way to quantify the most “popular/liked” user and output the top 5 users.</li>
 <li>Compare your two results and comment on why your method is a “best” metric to quantify “popularity/likability”.</li>
 </ul>
-<p><br></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Remember your boss likes pretty things! Make the graphic look nice. Your summary statistics should only include relevant columns and be displayed as a table. A useful way to make a table is to pipe your output into the <code>kable()</code> function. Any conclusions and insights should be in complete sentences.</p>
+</div>
+</div>
 <div class="callout-tip callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2982,13 +3002,26 @@ Solution
 </section>
 <section id="graduate-challenge" class="level2">
 <h2 class="anchored" data-anchor-id="graduate-challenge">Graduate Challenge</h2>
-<p><strong>Graduate students are required to complete this challenge. It is optional for undergraduate students.</strong></p>
-<p><em>Any time you have data with extreme outliers, you must decide how you will deal with them: leave them in, remove them, or change the value? Depending on the problem, outliers can greatly impact your results. Often you might want to compare results with and without outliers, so that you can determine the impact and examine the outliers in more detail.</em></p>
-<p>Recall your last assignment to <strong>determine if there is a relationship between messages sent and messages received and how this differs based on user gender.</strong></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Graduate students are required to complete this challenge. <strong>It is optional for undergraduate students.</strong></p>
+</div>
+</div>
+<p>Any time you have data with extreme outliers, you must decide how you will deal with them: leave them in, remove them, or change the value? Depending on the problem, outliers can greatly impact your results. Often you might want to compare results with and without outliers, so that you can determine the impact and examine the outliers in more detail.</p>
+<p>Recall your objective for the case study from L01: <strong>determine if there is a relationship between messages sent and messages received and how this differs based on user gender.</strong></p>
+<p>We will be updating that analysis, but will be taking steps to clean the data and handle outliers.</p>
 <p>Complete the following tasks:</p>
 <ul>
 <li>just because someone downloaded the app does not mean they sent or received messages, we are only interested in analyzing users who sent and received messages. First clean the data set by removing any irrelevant data.</li>
-<li>an outlier is any observation greater than Q3 + 1.5* IQR or less than Q1 - 1.5*IQR (Hint: use <code>quartile()</code> and <code>IQR()</code> to calculate)</li>
+<li>we will define an outlier as any observation greater than Q3 + 1.5 * IQR or less than Q1 - 1.5 * IQR (Hint: use <code>quartile()</code> and <code>IQR()</code> to calculate)</li>
 <li>plot the relationship of <code>messages_received</code> by <code>messages_sent</code> based on gender with the outliers removed. Include a caption indicating that outliers were removed.</li>
 <li>Calculate any relevant summary statistics 1) with the outliers included and 2) with the outliers removed. Comment on how the outliers are impacting your statistics.</li>
 </ul>
